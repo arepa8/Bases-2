@@ -5,14 +5,14 @@ CREATE TYPE entrenador_t();
 CREATE TYPE distancia_t();
 CREATE TYPE distancia_table();
 CREATE TYPE deportista_t();
-CREATE TYPE deportistas_t(); #Para relacion unos a muchos
+CREATE TYPE deportistas_t(); --#Para relacion unos a muchos
 
 
 
-####     DEPORTE     ####
+--####     DEPORTE     ####
 
 CREATE OR REPLACE distancia_t AS OBJECT(distancia INT);
-CREATE OR REPLACE distancia_table AS TABLE OF distancia_t;	#Atributo multivaluado distancia
+CREATE OR REPLACE distancia_table AS TABLE OF distancia_t;	--#Atributo multivaluado distancia
 
 CREATE OR REPLACE TYPE deporte_t AS OBJECT(
 	nombre VARCHAR(40),
@@ -28,7 +28,7 @@ CREATE OR REPLACE TYPE sport AS TABLE OF deporte_t;
 
 
 
-####     MEDALLA     ####
+--####     MEDALLA     ####
 
 CREATE OR REPLACE TYPE medalla_t AS OBJECT(
 	id INT,
@@ -40,7 +40,7 @@ CREATE TABLE medalla AS TABLE OF medalla_t (PRIMARY KEY (id));
 
 
 
-####     COMPETIDOR     ####
+--####     COMPETIDOR     ####
 
 CREATE OR REPLACE TYPE competidor_t AS OBJECT(
 	carnet INT,
@@ -50,10 +50,10 @@ CREATE OR REPLACE TYPE competidor_t AS OBJECT(
 
 CREATE TABLE competidor AS TABLE OF competidor_t (PRIMARY KEY (carnet))
 
-## REVISAR EL NESTED TABLE
+--## REVISAR EL NESTED TABLE
 
 
-####     DEPORTISTA     ####
+--####     DEPORTISTA     ####
 
 CREATE OR REPLACE TYPE deportista_t UNDER competidor_t (
 	pais VARCHAR(20),
@@ -67,7 +67,7 @@ CREATE TYPE deportistas AS TABLE OF deportista_t;
 
 
 
-####     ENTRENADOR     ####
+--####     ENTRENADOR     ####
 
 CREATE OR REPLACE TYPE entrenador_t UNDER competidor_t(
 	edad INT,
@@ -75,28 +75,5 @@ CREATE OR REPLACE TYPE entrenador_t UNDER competidor_t(
 	nacionalidad VARCHAR(20)
 	),
 MEMBER FUNCTION GET deportistas_col return deportistas;/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
