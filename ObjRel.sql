@@ -1,11 +1,11 @@
-CREATE TYPE deporte_t();
-CREATE TYPE medalla_t();
-CREATE TYPE competidor_t();
-CREATE TYPE entrenador_t();
-CREATE TYPE distancia_t();
-CREATE TYPE distancia_table();
-CREATE TYPE deportista_t();
-CREATE TYPE deportistas_t(); --#Para relacion unos a muchos
+CREATE OR REPLACE TYPE deporte_t;
+CREATE OR REPLACE TYPE medalla_t;
+CREATE OR REPLACE TYPE competidor_t;
+CREATE OR REPLACE TYPE entrenador_t;
+CREATE OR REPLACE TYPE distancia_t;
+CREATE OR REPLACE TYPE distancia_table;
+CREATE OR REPLACE TYPE deportista_t;
+CREATE OR REPLACE TYPE deportistas_t; --#Para relacion unos a muchos
 
 
 
