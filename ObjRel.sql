@@ -75,5 +75,7 @@ CREATE OR REPLACE TYPE entrenador_t UNDER competidor_t(
 	nacionalidad VARCHAR(20)
 	),
 MEMBER FUNCTION GET deportistas_col return deportistas;/
-
+--BEGIN
+--END;
+/
 
