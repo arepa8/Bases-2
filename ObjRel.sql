@@ -17,6 +17,8 @@
 CREATE OR REPLACE TYPE distancia_t AS OBJECT (
 	distancia	INT);
 /
+CREATE OR REPLACE TYPE distancia_table AS TABLE OF distancia_t
+/
 CREATE OR REPLACE TYPE medalla_t
 /
 CREATE OR REPLACE TYPE competidor_t
@@ -24,8 +26,6 @@ CREATE OR REPLACE TYPE competidor_t
 CREATE OR REPLACE TYPE entrenador_t
 /
 CREATE OR REPLACE TYPE deporte_t
-/
-CREATE OR REPLACE TYPE distancia_table
 /
 CREATE OR REPLACE TYPE deportista_t
 /
