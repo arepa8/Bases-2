@@ -37,12 +37,12 @@ CREATE OR REPLACE TYPE medalla_t AS OBJECT (
 /
 CREATE OR REPLACE TYPE competidor_t AS OBJECT (
 	carnet	INT,
-	nombre	VARCHAR(40) NOT FINAL,
+	nombre	VARCHAR(40),
 	compite	disciplina);
 /
 CREATE OR REPLACE TYPE entrenador_t UNDER competidor_t (
-	edad				INT
-	años_experiencia	INT
+	edad				INT,
+	tiempo_experiencia	INT,
 	nacionalidad		VARCHAR(20));
 /
 CREATE OR REPLACE TYPE deportista_t UNDER competidor_t (
