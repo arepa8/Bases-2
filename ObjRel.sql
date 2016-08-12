@@ -1,4 +1,21 @@
-CREATE OR REPLACE TYPE deporte_t
+--
+--	Universidad Simon Bolivar
+--	Paradigmas de Modelado de Bases de Datos
+--
+--	Proyecto 1: Traducción a Objeto Relacional
+--
+--
+--	Autores:	Andres Hernandez
+--				Samuel
+--
+--	DBMS: Sql*plus, oracle			
+--	Fecha: 15/8/2016
+--
+
+
+
+CREATE OR REPLACE TYPE distancia_t AS OBJECT (
+	distancia	INT);
 /
 CREATE OR REPLACE TYPE medalla_t
 /
@@ -6,7 +23,7 @@ CREATE OR REPLACE TYPE competidor_t
 /
 CREATE OR REPLACE TYPE entrenador_t
 /
-CREATE OR REPLACE TYPE distancia_t
+CREATE OR REPLACE TYPE deporte_t
 /
 CREATE OR REPLACE TYPE distancia_table
 /
