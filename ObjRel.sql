@@ -17,27 +17,42 @@
 CREATE OR REPLACE TYPE distancia_t AS OBJECT (
 	distancia	INT);
 /
+
 CREATE OR REPLACE TYPE distancia_table AS TABLE OF distancia_t
 /
+
 CREATE OR REPLACE TYPE deporte_t AS OBJECT (
 	nombre		VARCHAR(40),
 	record		CHAR(8),
 	distancia	distancia_table);
 /
 
-CREATE OR REPLACE TYPE medalla_t AS OBJECT(
+CREATE OR REPLACE TYPE disciplina AS TABLE OF deporte_t
+/
+
+CREATE OR REPLACE TYPE medalla_t AS OBJECT (
 	id			INT,
 	olimpiada	VARCHAR(20),
 	otorga REF 	deporte_t);
 /
-CREATE OR REPLACE TYPE competidor_t
+CREATE OR REPLACE TYPE competidor_t AS OBJECT (
+	carnet	INT,
+	nombre	VARCHAR(40) NOT FINAL,
+	compite	disciplina);
 /
-CREATE OR REPLACE TYPE entrenador_t
+CREATE OR REPLACE TYPE entrenador_t UNDER competidor_t (
+	edad				INT
+	años_experiencia	INT
+	nacionalidad		VARCHAR(20));
 /
-CREATE OR REPLACE TYPE deportista_t
+CREATE OR REPLACE TYPE deportista_t UNDER competidor_t (
+	pais 		VARCHAR(20),
+	edad 		INT,
+	estatura 	NUMBER(3,2),
+	entrena REF entrenador);
 /
-CREATE OR REPLACE TYPE deportistas_t --#Para relacion unos a muchos
-
+CREATE OR REPLACE TYPE deportistas_table AS TABLE OF deportista_t --#Para relacion unos a muchos
+/
 
 
 --####     DEPORTE     ####
@@ -108,5 +123,5 @@ CREATE OR REPLACE TYPE deportistas_t --#Para relacion unos a muchos
 --MEMBER FUNCTION GET deportistas_col return deportistas;/
 --BEGIN
 --END;
-/
+
 
