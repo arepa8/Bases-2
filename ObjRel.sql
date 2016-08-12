@@ -5,8 +5,8 @@
 --	Proyecto 1: Traducción a Objeto Relacional
 --
 --
---	Autores:	Andres Hernandez
---				Samuel
+--	Autores:	Samuel Rodriguez
+--				Andres Hernandez
 --
 --	DBMS: Sql*plus, oracle			
 --	Fecha: 15/8/2016
@@ -24,7 +24,11 @@ CREATE OR REPLACE TYPE deporte_t AS OBJECT (
 	record		CHAR(8),
 	distancia	distancia_table);
 /
-CREATE OR REPLACE TYPE medalla_t
+
+CREATE OR REPLACE TYPE medalla_t AS OBJECT(
+	id			INT,
+	olimpiada	VARCHAR(20),
+	otorga REF 	deporte_t);
 /
 CREATE OR REPLACE TYPE competidor_t
 /
