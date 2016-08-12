@@ -38,7 +38,7 @@ CREATE OR REPLACE TYPE medalla_t AS OBJECT (
 CREATE OR REPLACE TYPE competidor_t AS OBJECT (
 	carnet	INT,
 	nombre	VARCHAR(40),
-	compite	disciplina);
+	compite	disciplina) NOT FINAL;
 /
 CREATE OR REPLACE TYPE entrenador_t UNDER competidor_t (
 	edad				INT,
@@ -49,9 +49,9 @@ CREATE OR REPLACE TYPE deportista_t UNDER competidor_t (
 	pais 		VARCHAR(20),
 	edad 		INT,
 	estatura 	NUMBER(3,2),
-	entrena REF entrenador);
+	entrena REF entrenador_t);
 /
-CREATE OR REPLACE TYPE deportistas_table AS TABLE OF deportista_t --#Para relacion unos a muchos
+CREATE OR REPLACE TYPE deportista_table AS TABLE OF deportista_t --#Para relacion unos a muchos
 /
 
 
