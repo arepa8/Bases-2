@@ -1,3 +1,9 @@
+DROP TABLE deporte OF deporte_t CASCADE CONSTRAINTS;
+DROP TABLE medalla OF medalla_t CASCADE CONSTRAINTS;
+DROP TABLE competidor OF competidor_t CASCADE CONSTRAINTS;
+DROP TABLE deportista OF deportista_t CASCADE CONSTRAINTS;
+DROP TABLE entrenador OF entrenador_t CASCADE CONSTRAINTS;
+
 DROP TYPE distancia_table FORCE
 /
 DROP TYPE deporte_t FORCE

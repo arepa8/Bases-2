@@ -13,6 +13,7 @@
 --
 
 
+--	Creacion de los objetos
 
 CREATE OR REPLACE TYPE distancia_t AS OBJECT (
 	distancia	INT);
@@ -45,7 +46,8 @@ CREATE OR REPLACE TYPE competidor_t AS OBJECT (
 CREATE OR REPLACE TYPE entrenador_t UNDER competidor_t (
 	edad				INT,
 	tiempo_experiencia	INT,
-	nacionalidad		VARCHAR(20));
+	nacionalidad		VARCHAR(20),
+	MEMBER FUNCTION get_deportistas return deportistas;);
 /
 CREATE OR REPLACE TYPE deportista_t UNDER competidor_t (
 	pais 		VARCHAR(20),
@@ -56,6 +58,14 @@ CREATE OR REPLACE TYPE deportista_t UNDER competidor_t (
 CREATE OR REPLACE TYPE deportista_table AS TABLE OF deportista_t --#Para relacion unos a muchos
 /
 
+--	Creacion de las tablas
+
+CREATE OR REPLACE TABLE deporte OF deporte_t;
+CREATE OR REPLACE TABLE medalla OF medalla_t;
+CREATE OR REPLACE TABLE competidor OF competidor_t
+	NESTED TABLE compite STORE AS compite_tab;
+CREATE OR REPLACE TABLE deportista OF deportista_t;
+CREATE OR REPLACE TABLE entrenador OF entrenador_t;
 
 --####     DEPORTE     ####
 
