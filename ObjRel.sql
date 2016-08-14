@@ -24,7 +24,9 @@ CREATE OR REPLACE TYPE distancia_table AS TABLE OF distancia_t
 CREATE OR REPLACE TYPE deporte_t AS OBJECT (
 	nombre		VARCHAR(40),
 	record		CHAR(8),
-	distancia	distancia_table);
+	distancia	distancia_table),
+	MEMBER FUNCTION get_medalla RETURN medalla_t,
+	MEMBER FUNCTION get_competidor RETURN competidor_t;
 /
 
 CREATE OR REPLACE TYPE disciplina AS TABLE OF deporte_t
