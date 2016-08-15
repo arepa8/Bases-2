@@ -27,20 +27,7 @@ CREATE OR REPLACE TYPE deporte_t AS OBJECT (
 	record		CHAR(8),
 	distancia	distancia_table,
 	MAP MEMBER FUNCTION get_medalla RETURN INT,
-	MAP MEMBER FUNCTION get_competidor RETURN VARCHAR(40));
-/
-
-CREATE TYPE BODY deporte_t AS
-  MAP MEMBER FUNCTION get_medalla RETURN INT IS
-  BEGIN
-    RETURN 1;
-  END;
-
-  MAP MEMBER FUNCTION get_competidor RETURN VARCHAR(40) IS
-  BEGIN
-  	RETURN "competidor";
-  END;
-END;
+	MAP MEMBER FUNCTION get_competidor RETURN VARCHAR);
 /
 
 CREATE OR REPLACE TYPE medalla_t AS OBJECT (
@@ -75,12 +62,12 @@ CREATE OR REPLACE TYPE deportista_table AS TABLE OF deportista_t --#Para relacio
 
 --	Creacion de las tablas
 
-CREATE TABLE deporte OF deporte_t;
-CREATE TABLE medalla OF medalla_t;
-CREATE TABLE competidor OF competidor_t
-	NESTED TABLE compite STORE AS compite_tab;
-CREATE TABLE deportista OF deportista_t;
-CREATE TABLE entrenador OF entrenador_t;
+--CREATE TABLE deporte OF deporte_t;
+--CREATE TABLE medalla OF medalla_t;
+--CREATE TABLE competidor OF competidor_t
+--	NESTED TABLE compite STORE AS compite_tab;
+--CREATE TABLE deportista OF deportista_t;
+--CREATE TABLE entrenador OF entrenador_t;
 
 
 
