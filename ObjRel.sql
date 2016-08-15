@@ -30,11 +30,25 @@ CREATE OR REPLACE TYPE deporte_t AS OBJECT (
 	MAP MEMBER FUNCTION get_competidor RETURN VARCHAR(40));
 /
 
+CREATE TYPE BODY deporte_t AS
+  MAP MEMBER FUNCTION get_medalla RETURN INT IS
+  BEGIN
+    RETURN 1;
+  END;
+
+  MAP MEMBER FUNCTION get_competidor RETURN VARCHAR(40) IS
+  BEGIN
+  	RETURN "competidor";
+  END;
+END;
+/
+
 CREATE OR REPLACE TYPE medalla_t AS OBJECT (
 	id			INT,
 	olimpiada	VARCHAR(20),
 	otorga REF 	deporte_t);
 /
+
 
 CREATE OR REPLACE TYPE competidor_t AS OBJECT (
 	carnet	INT,
