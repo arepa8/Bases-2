@@ -26,8 +26,8 @@ CREATE OR REPLACE TYPE deporte_t AS OBJECT (
 	nombre		VARCHAR(40),
 	record		CHAR(8),
 	distancia	distancia_table,
-	MAP MEMBER FUNCTION get_medalla RETURN INT,
-	MAP MEMBER FUNCTION get_competidor RETURN VARCHAR);
+	MEMBER FUNCTION get_medalla RETURN INT,
+	MEMBER FUNCTION get_competidor RETURN VARCHAR);
 /
 
 CREATE OR REPLACE TYPE disciplina AS TABLE OF deporte_t
@@ -50,7 +50,8 @@ CREATE OR REPLACE TYPE competidor_t AS OBJECT (
 CREATE OR REPLACE TYPE entrenador_t UNDER competidor_t (
 	edad				INT,
 	tiempo_experiencia	INT,
-	nacionalidad		VARCHAR(20));
+	nacionalidad		VARCHAR(20),
+	MEMBER FUNCTION get_deportistas RETURN VARCHAR);
 /
 CREATE OR REPLACE TYPE deportista_t UNDER competidor_t (
 	pais 		VARCHAR(20),
