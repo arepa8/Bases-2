@@ -15,20 +15,11 @@
 
 --	Creacion de los objetos
 
-CREATE OR REPLACE TYPE distancia_t AS OBJECT (
+CREATE TYPE distancia_t AS OBJECT (
 	distancia	INT);
 /
 
 CREATE OR REPLACE TYPE distancia_table AS TABLE OF distancia_t
-/
-
-CREATE OR REPLACE TYPE deporte_t AS OBJECT (
-	nombre		VARCHAR(40),
-	record		CHAR(8),
-	distancia	distancia_table);
-/
-
-CREATE OR REPLACE TYPE disciplina AS TABLE OF deporte_t
 /
 
 CREATE OR REPLACE TYPE medalla_t AS OBJECT (
@@ -36,11 +27,24 @@ CREATE OR REPLACE TYPE medalla_t AS OBJECT (
 	olimpiada	VARCHAR(20),
 	otorga REF 	deporte_t);
 /
+
 CREATE OR REPLACE TYPE competidor_t AS OBJECT (
 	carnet	INT,
 	nombre	VARCHAR(40),
 	compite	disciplina) NOT FINAL;
 /
+
+CREATE OR REPLACE TYPE deporte_t AS OBJECT (
+	nombre		VARCHAR(40),
+	record		CHAR(8),
+	distancia	distancia_table,
+	MAP MEMBER FUNCTION get_medalla RETURN medalla_t,
+	MAP MEMBER FUNCTION get_competidor RETURN competidor_t);
+/
+
+CREATE OR REPLACE TYPE disciplina AS TABLE OF deporte_t
+/
+
 CREATE OR REPLACE TYPE entrenador_t UNDER competidor_t (
 	edad				INT,
 	tiempo_experiencia	INT,
@@ -63,6 +67,22 @@ CREATE TABLE competidor OF competidor_t
 	NESTED TABLE compite STORE AS compite_tab;
 CREATE TABLE deportista OF deportista_t;
 CREATE TABLE entrenador OF entrenador_t;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 --	Inserciones
