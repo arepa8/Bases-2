@@ -30,6 +30,9 @@ CREATE OR REPLACE TYPE deporte_t AS OBJECT (
 	MAP MEMBER FUNCTION get_competidor RETURN VARCHAR);
 /
 
+CREATE OR REPLACE TYPE disciplina AS TABLE OF deporte_t
+/
+
 CREATE OR REPLACE TYPE medalla_t AS OBJECT (
 	id			INT,
 	olimpiada	VARCHAR(20),
@@ -43,8 +46,6 @@ CREATE OR REPLACE TYPE competidor_t AS OBJECT (
 	compite	disciplina) NOT FINAL;
 /
 
-CREATE OR REPLACE TYPE disciplina AS TABLE OF deporte_t
-/
 
 CREATE OR REPLACE TYPE entrenador_t UNDER competidor_t (
 	edad				INT,
