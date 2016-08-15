@@ -13,9 +13,29 @@
 --
 
 
+CREATE TYPE distancia_t 
+/
+CREATE TYPE distancia_table
+/
+CREATE TYPE deporte_t 
+/
+CREATE TYPE disciplina
+/
+CREATE TYPE medalla_t 
+/
+CREATE TYPE competidor_t
+/
+CREATE TYPE entrenador_t
+/
+CREATE TYPE deportista_t
+/
+CREATE TYPE deportista_table
+/
+
+
 --	Creacion de los objetos
 
-CREATE TYPE distancia_t AS OBJECT (
+CREATE OR REPLACE TYPE distancia_t AS OBJECT (
 	distancia	INT);
 /
 
