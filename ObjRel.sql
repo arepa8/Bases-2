@@ -67,6 +67,54 @@ CREATE OR REPLACE TABLE competidor OF competidor_t
 CREATE OR REPLACE TABLE deportista OF deportista_t;
 CREATE OR REPLACE TABLE entrenador OF entrenador_t;
 
+
+--	Inserciones
+
+DECLARE
+
+comp1 deportista_t := competidor_t(1010353,'Andres Hernandez',disciplina(deporte_t('Atletismo','9.54s',distancia_table(distancia_t(100)))))
+
+BEGIN
+
+	-- Tabla Deporte
+	INSERT INTO disciplina VALUES (deporte_t('Atletismo','9.54s',distancia_table(distancia_t(100))));
+	INSERT INTO disciplina VALUES (deporte_t('Natacion','18.04s',distancia_table(distancia_t(100))));
+	INSERT INTO disciplina VALUES (deporte_t('Ciclismo','20m',distancia_table(distancia_t(10000))));
+
+	-- Tabla Medalla
+	INSERT INTO medalla VALUES (medalla_t(1, 'Beijing 2008',));
+	INSERT INTO medalla VALUES (medalla_t(2, 'Londres 2012',));
+	INSERT INTO medalla VALUES (medalla_t(3, 'Rio 2016',));
+
+	-- Tabla Deportista
+	INSERT INTO deportista VALUES (deportista_t('Venezuela',23,1.80,));
+	INSERT INTO deportista VALUES (deportista_t('Estados Unidos',32,1.75,));
+	INSERT INTO deportista VALUES (deportista_t('Colombia',23,1.60,));
+
+	-- Tabla Entrenador
+	INSERT INTO entrenador VALUES (entrenador_t(60, 30, 'venezolano', ));
+	INSERT INTO entrenador VALUES (entrenador_t(60, 30, 'venezolano', ));
+	INSERT INTO entrenador VALUES (entrenador_t(60, 30, 'venezolano', ));
+
+END;
+/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 --####     DEPORTE     ####
 
 --CREATE OR REPLACE distancia_t AS OBJECT(distancia INT);
