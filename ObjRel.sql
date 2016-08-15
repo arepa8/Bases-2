@@ -26,8 +26,8 @@ CREATE OR REPLACE TYPE deporte_t AS OBJECT (
 	nombre		VARCHAR(40),
 	record		CHAR(8),
 	distancia	distancia_table),
-	MEMBER FUNCTION get_medalla RETURN medalla_t,
-	MEMBER FUNCTION get_competidor RETURN competidor_t;
+	MAP MEMBER FUNCTION get_medalla RETURN medalla_t,
+	MAP MEMBER FUNCTION get_competidor RETURN competidor_t;
 /
 
 CREATE OR REPLACE TYPE disciplina AS TABLE OF deporte_t
@@ -60,44 +60,44 @@ CREATE OR REPLACE TYPE deportista_table AS TABLE OF deportista_t --#Para relacio
 
 --	Creacion de las tablas
 
-CREATE OR REPLACE TABLE deporte OF deporte_t;
-CREATE OR REPLACE TABLE medalla OF medalla_t;
-CREATE OR REPLACE TABLE competidor OF competidor_t
+CREATE TABLE deporte OF deporte_t;
+CREATE TABLE medalla OF medalla_t;
+CREATE TABLE competidor OF competidor_t
 	NESTED TABLE compite STORE AS compite_tab;
-CREATE OR REPLACE TABLE deportista OF deportista_t;
-CREATE OR REPLACE TABLE entrenador OF entrenador_t;
+CREATE TABLE deportista OF deportista_t;
+CREATE TABLE entrenador OF entrenador_t;
 
 
 --	Inserciones
 
-DECLARE
+--DECLARE
 
-comp1 deportista_t := competidor_t(1010353,'Andres Hernandez',disciplina(deporte_t('Atletismo','9.54s',distancia_table(distancia_t(100)))))
+--comp1 deportista_t := competidor_t(1010353,'Andres Hernandez',disciplina(deporte_t('Atletismo','9.54s',distancia_table(distancia_t(100)))))
 
-BEGIN
+--BEGIN
 
 	-- Tabla Deporte
-	INSERT INTO disciplina VALUES (deporte_t('Atletismo','9.54s',distancia_table(distancia_t(100))));
-	INSERT INTO disciplina VALUES (deporte_t('Natacion','18.04s',distancia_table(distancia_t(100))));
-	INSERT INTO disciplina VALUES (deporte_t('Ciclismo','20m',distancia_table(distancia_t(10000))));
+	--INSERT INTO disciplina VALUES (deporte_t('Atletismo','9.54s',distancia_table(distancia_t(100))));
+	--INSERT INTO disciplina VALUES (deporte_t('Natacion','18.04s',distancia_table(distancia_t(100))));
+	--INSERT INTO disciplina VALUES (deporte_t('Ciclismo','20m',distancia_table(distancia_t(10000))));
 
 	-- Tabla Medalla
-	INSERT INTO medalla VALUES (medalla_t(1, 'Beijing 2008',));
-	INSERT INTO medalla VALUES (medalla_t(2, 'Londres 2012',));
-	INSERT INTO medalla VALUES (medalla_t(3, 'Rio 2016',));
+	--INSERT INTO medalla VALUES (medalla_t(1, 'Beijing 2008',));
+	--INSERT INTO medalla VALUES (medalla_t(2, 'Londres 2012',));
+	--INSERT INTO medalla VALUES (medalla_t(3, 'Rio 2016',));
 
 	-- Tabla Deportista
-	INSERT INTO deportista VALUES (deportista_t('Venezuela',23,1.80,));
-	INSERT INTO deportista VALUES (deportista_t('Estados Unidos',32,1.75,));
-	INSERT INTO deportista VALUES (deportista_t('Colombia',23,1.60,));
+	--INSERT INTO deportista VALUES (deportista_t('Venezuela',23,1.80,));
+	--INSERT INTO deportista VALUES (deportista_t('Estados Unidos',32,1.75,));
+	--INSERT INTO deportista VALUES (deportista_t('Colombia',23,1.60,));
 
 	-- Tabla Entrenador
-	INSERT INTO entrenador VALUES (entrenador_t(60, 30, 'venezolano', ));
-	INSERT INTO entrenador VALUES (entrenador_t(60, 30, 'venezolano', ));
-	INSERT INTO entrenador VALUES (entrenador_t(60, 30, 'venezolano', ));
+	--INSERT INTO entrenador VALUES (entrenador_t(60, 30, 'venezolano', ));
+	--INSERT INTO entrenador VALUES (entrenador_t(60, 30, 'venezolano', ));
+	--INSERT INTO entrenador VALUES (entrenador_t(60, 30, 'venezolano', ));
 
-END;
-/
+--END;
+--/
 
 
 
