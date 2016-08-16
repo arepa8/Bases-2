@@ -1,0 +1,20 @@
+DROP TYPE distancia FORCE
+/
+DROP TYPE medalla_t FORCE
+/
+DROP TYPE deporte_t FORCE
+/
+DROP TYPE disciplina_t FORCE
+/
+DROP TYPE competidor_t FORCE
+/
+DROP TYPE entrenador_t FORCE
+/
+DROP TYPE deportista_t FORCE
+/
+DROP TYPE deportista_table FORCE
+/
+
+DROP TABLE deporte CASCADE CONSTRAINTS;
+DROP TABLE medalla CASCADE CONSTRAINTS;
+DROP TABLE competidor CASCADE CONSTRAINTS;
