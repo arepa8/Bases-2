@@ -19,6 +19,10 @@ CREATE TABLE deporte (
 	distancia 	distancias
 );
 
+INSERT INTO deporte (nombre, record, distancia) VALUES ('Natacion','10.08s',distancias(100,200,400,800))
+INSERT INTO deporte (nombre, record, distancia) VALUES ('Atletismo','9.54s',distancias(100,200,400,800,1500))
+INSERT INTO deporte (nombre, record, distancia) VALUES ('Ciclismo','10.08s',distancias(10000,20000,40000,80000))
+
 CREATE OR REPLACE TYPE medalla_t AS OBJECT (
 	id			INT,
 	olimpiada	VARCHAR(20),
@@ -26,6 +30,9 @@ CREATE OR REPLACE TYPE medalla_t AS OBJECT (
 /
 CREATE TABLE medalla OF medalla_t;
 
+INSERT INTO medalla (id,olimpiada,otorga) VALUES (1,'Beijing',SELECT REF(d) FROM deporte d WHERE d.nombre='Natacion')
+INSERT INTO medalla (id,olimpiada,otorga) VALUES (1,'Londres',SELECT REF(d) FROM deporte d WHERE d.nombre='Atletismo')
+INSERT INTO medalla (id,olimpiada,otorga) VALUES (1,'Rio',SELECT REF(d) FROM deporte d WHERE d.nombre='Ciclismo')
 
 CREATE OR REPLACE TYPE deporte_t AS OBJECT (
 	nombre		VARCHAR(40),
